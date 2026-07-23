@@ -399,6 +399,10 @@
   <div class="flying-page p4"><img data-hero-floater alt=""></div>
   <div class="flying-page p5"><img data-hero-floater alt=""></div>
   <div class="flying-page p6"><img data-hero-floater alt=""></div>
+  <div class="flying-page s1"><img data-hero-floater alt=""></div>
+  <div class="flying-page s2"><img data-hero-floater alt=""></div>
+  <div class="flying-page s3"><img data-hero-floater alt=""></div>
+  <div class="flying-page s4"><img data-hero-floater alt=""></div>
 
   <div class="crossed-flags">
     <svg viewBox="0 0 100 80" overflow="visible">
@@ -428,7 +432,7 @@
       </g>
     </svg>
   </div>
-  <p class="flag-caption mono">Poland ⨯ Spain, since forever</p>
+  <p class="flag-caption mono">Polska ⨯ Es, since forever</p>
 
   <h1>Adam <span class="amp">&amp;</span> Reme</h1>
 
@@ -527,9 +531,22 @@
 <script>
 (function(){
   var P = window.__PHOTOS__ || { hero:[], kids:{}, gallery:[] };
+  // Floater pool = the whole library (gallery + childhood), shuffled.
+  var pool = (P.gallery || []).map(function(p){ return p.src; }).concat(P.hero || []);
+  for (var i = pool.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = pool[i]; pool[i] = pool[j]; pool[j] = tmp;
+  }
   var floaters = document.querySelectorAll('.hero .flying-page img[data-hero-floater]');
-  if (P.hero && P.hero.length) {
-    floaters.forEach(function(img, i){ img.src = P.hero[i % P.hero.length]; });
+  if (pool.length) {
+    var next = 0;
+    floaters.forEach(function(img){
+      img.src = pool[next++ % pool.length];
+      // each time this photo finishes a drift cycle, swap in the next one,
+      // so the whole library floats by over time
+      var host = img.closest('.flying-page');
+      if (host) host.addEventListener('animationiteration', function(){ img.src = pool[next++ % pool.length]; });
+    });
   } else {
     document.querySelectorAll('.hero .flying-page').forEach(function(el){ el.style.display = 'none'; });
   }
