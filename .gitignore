@@ -1,0 +1,14 @@
+# Raw source photos — already embedded as base64 inside countdown.html,
+# so they aren't needed to view or deploy the page. Kept on disk, untracked,
+# to keep the repo lean and pushable to any host.
+*.heic
+*.HEIC
+*.jpeg
+*.jpg
+*.JPG
+*.JPEG
+*.png
+*.PNG
+
+# Windows internet shortcut (Google Photos album link)
+*.url
