@@ -44,8 +44,7 @@
     text-align:center;
     padding:6rem 1.5rem 4rem;
     overflow:hidden;
-    background:
-      radial-gradient(ellipse at 50% -10%, #ffb15c 0%, var(--sea) 45%, var(--sea-deep) 78%, var(--sea-deeper) 100%);
+    background:#c47c57;
     color:var(--paper);
   }
   .stars{
@@ -57,7 +56,7 @@
       radial-gradient(1px 1px at 88% 40%, rgba(255,255,255,.35), transparent),
       radial-gradient(1.5px 1.5px at 10% 45%, rgba(255,255,255,.3), transparent),
       radial-gradient(1px 1px at 40% 12%, rgba(255,255,255,.4), transparent);
-    opacity:.8;
+    opacity:.4;
     pointer-events:none;
   }
   .ridge{
@@ -73,26 +72,26 @@
     position:absolute;
     width:74px; height:74px;
     background:var(--paper);
-    border:2px solid rgba(255,253,247,0.85);
+    border:1px solid rgba(255,253,247,0.55);
     border-radius:5px;
-    box-shadow:0 8px 18px rgba(0,0,0,.3);
+    box-shadow:0 3px 12px rgba(80,40,20,.12);
     overflow:hidden;
     opacity:0;
     pointer-events:none;
     animation: drift 16s linear infinite;
   }
   .flying-page img{ width:100%; height:100%; object-fit:cover; display:block; }
-  .flying-page.p1{ left:8%; top:72%; animation-delay:0s; }
-  .flying-page.p2{ left:28%; top:82%; animation-delay:2.7s; }
-  .flying-page.p3{ left:50%; top:76%; animation-delay:5.4s; }
-  .flying-page.p4{ left:68%; top:85%; animation-delay:8.1s; }
-  .flying-page.p5{ left:85%; top:70%; animation-delay:10.8s; }
-  .flying-page.p6{ left:15%; top:60%; animation-delay:13.5s; }
+  .flying-page.p1{ left:6%; top:74%; animation-delay:0s; }
+  .flying-page.p2{ left:52%; top:66%; animation-delay:1.6s; }
+  .flying-page.p3{ left:28%; top:84%; animation-delay:3.2s; }
+  .flying-page.p4{ left:78%; top:72%; animation-delay:4.8s; }
+  .flying-page.p5{ left:40%; top:62%; animation-delay:6.4s; }
+  .flying-page.p6{ left:90%; top:80%; animation-delay:8s; }
   .flying-page.on-light{ border-color:rgba(43,38,32,.2); box-shadow:0 8px 18px rgba(43,38,32,.22); }
-  .flying-page.s1{ left:6%; top:78%; animation-delay:1.3s; }
-  .flying-page.s2{ left:32%; top:70%; animation-delay:5.8s; }
-  .flying-page.s3{ left:62%; top:82%; animation-delay:9.5s; }
-  .flying-page.s4{ left:88%; top:68%; animation-delay:13.2s; }
+  .flying-page.s1{ left:16%; top:68%; animation-delay:9.6s; }
+  .flying-page.s2{ left:64%; top:86%; animation-delay:11.2s; }
+  .flying-page.s3{ left:36%; top:72%; animation-delay:12.8s; }
+  .flying-page.s4{ left:84%; top:64%; animation-delay:14.4s; }
   .flying-page.g1{ left:5%; top:80%; animation-delay:0.8s; }
   .flying-page.g2{ left:24%; top:72%; animation-delay:4.2s; }
   .flying-page.g3{ left:46%; top:85%; animation-delay:7.6s; }
@@ -134,7 +133,7 @@
     border-radius:50%;
     background:repeating-linear-gradient(135deg, rgba(255,253,247,.22), rgba(255,253,247,.22) 6px, rgba(255,253,247,.1) 6px, rgba(255,253,247,.1) 12px);
     display:flex; align-items:center; justify-content:center;
-    box-shadow:0 4px 10px rgba(0,0,0,.18);
+    box-shadow:0 2px 8px rgba(80,40,20,.12);
   }
   .ph-circle svg{ width:28px; height:28px; opacity:.75; }
   .ph-circle img{ width:100%; height:100%; border-radius:50%; object-fit:cover; display:block; }
@@ -180,10 +179,10 @@
     width:clamp(64px, 15vw, 96px);
     height:clamp(64px, 15vw, 96px);
     perspective:320px;
-    filter:drop-shadow(0 10px 18px rgba(0,0,0,.35));
+    filter:drop-shadow(0 3px 8px rgba(90,50,30,.14));
   }
   .ring-pair{ position:absolute; top:-7px; left:0; width:100%; display:flex; justify-content:space-between; padding:0 14%; z-index:5; }
-  .ring-pair span{ width:8px; height:8px; border-radius:50%; background:var(--sea-deeper); box-shadow:0 0 0 2px var(--paper-shadow) inset; }
+  .ring-pair span{ width:7px; height:7px; border-radius:50%; background:rgba(255,253,247,.5); box-shadow:none; }
   .panel{
     position:absolute; inset:0;
     display:flex; align-items:center; justify-content:center;
@@ -208,10 +207,9 @@
   }
   .front-panel::before{
     content:'';
-    position:absolute; top:0; left:0; right:0; height:6px;
-    background:var(--clay);
+    position:absolute; top:0; left:0; right:0; height:4px;
+    background:rgba(43,38,32,.10);
     border-radius:9px 9px 0 0;
-    opacity:.9;
   }
   .front-panel.flipping{ transform:rotateX(-180deg); }
   .front-panel.no-transition{ transition:none; }
@@ -432,7 +430,7 @@
       </g>
     </svg>
   </div>
-  <p class="flag-caption mono">Polska ⨯ España, since forever</p>
+  <p class="flag-caption mono">Polska ⨯ España, final union</p>
 
   <h1>Adam <span class="amp">&amp;</span> Reme</h1>
 
@@ -490,9 +488,9 @@
   <div class="ridge">
     <svg viewBox="0 0 1200 260" preserveAspectRatio="none">
       <path d="M0,260 L0,160 L60,150 L120,170 L180,110 L230,140 L280,90 L330,130 L390,60 L440,100 L500,70 L560,120 L620,80 L690,150 L740,100 L800,140 L860,95 L920,130 L980,75 L1040,120 L1100,90 L1160,140 L1200,110 L1200,260 Z"
-        fill="#a83e17" opacity="0.9"/>
+        fill="#a5673f" opacity="0.45"/>
       <path d="M0,260 L0,200 L80,190 L150,210 L210,170 L270,195 L340,150 L400,185 L470,140 L540,175 L610,150 L680,190 L750,160 L820,195 L890,155 L960,185 L1030,150 L1100,180 L1160,160 L1200,190 L1200,260 Z"
-        fill="#e8631f" opacity="0.9"/>
+        fill="#b87b52" opacity="0.5"/>
     </svg>
   </div>
 
@@ -502,8 +500,8 @@
 
 <section class="gallery">
   <div class="gallery-inner">
-    <h2>Our moments</h2>
-    <p class="lede">Tu y yo, yo y tu.</p>
+    <h2>Our momentitos</h2>
+    <p class="lede">Tu y yo, yo y tu ...</p>
     <div class="masonry" id="galleryGrid"></div>
   </div>
 </section>
