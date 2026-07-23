@@ -1,14 +1,20 @@
-# Raw source photos — already embedded as base64 inside countdown.html,
-# so they aren't needed to view or deploy the page. Kept on disk, untracked,
-# to keep the repo lean and pushable to any host.
+# Dependencies
+node_modules/
+
+# Raw source photos — large originals (HEIC/JPG), kept on disk only so the
+# photos can be re-optimized. The optimized photos/web/*.webp that the page
+# actually loads ARE committed (webp is not ignored below).
 *.heic
 *.HEIC
-*.jpeg
 *.jpg
 *.JPG
+*.jpeg
 *.JPEG
 *.png
 *.PNG
 
 # Windows internet shortcut (Google Photos album link)
 *.url
+
+# One-time working file produced while editing
+countdown.stripped.html

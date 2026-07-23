@@ -1,0 +1,14 @@
+{
+  "name": "adam-reme-countdown",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Wedding countdown page for Adam & Reme (25.07.2027, Orba)",
+  "scripts": {
+    "photos": "node scripts/build-photos.mjs"
+  },
+  "dependencies": {
+    "heic-convert": "^2.1.0",
+    "sharp": "^0.33.5"
+  }
+}
