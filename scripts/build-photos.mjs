@@ -12,7 +12,7 @@
 // Re-runs are cheap: an image is reconverted only when its source is newer
 // than the existing output. Drop new photos in, run again, git push.
 
-import { readdir, mkdir, stat, readFile, writeFile } from 'node:fs/promises';
+import { readdir, mkdir, stat, readFile, writeFile, rm } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
@@ -70,6 +70,19 @@ async function convertOne(srcPath, outPath) {
   return { width: out.info.width, height: out.info.height, skipped: false };
 }
 
+// Delete optimized outputs whose source image no longer exists (renamed/removed).
+async function prune(srcDir, outDir) {
+  if (!existsSync(outDir)) return;
+  const srcBases = new Set((await listImages(srcDir)).map(n => n.replace(IMG_RE, '')));
+  const outs = (await readdir(outDir, { withFileTypes: true })).filter(e => e.isFile() && e.name.endsWith('.webp'));
+  for (const o of outs) {
+    if (!srcBases.has(o.name.replace(/\.webp$/, ''))) {
+      await rm(path.join(outDir, o.name));
+      console.log(`prune  ${path.relative(SRC_DIR, path.join(outDir, o.name))}`);
+    }
+  }
+}
+
 // Date-named files (YYYY-MM-DD…) sort chronologically first; everything else after, by name.
 function sortKey(name) {
   const m = name.match(/^(\d{4})-(\d{2})-(\d{2})/);
@@ -79,6 +92,10 @@ function sortKey(name) {
 async function main() {
   await mkdir(OUT_DIR, { recursive: true });
   await mkdir(OUT_PEQ_DIR, { recursive: true });
+
+  // Drop outputs left behind by renamed/removed sources.
+  await prune(PEQ_DIR, OUT_PEQ_DIR);
+  await prune(SRC_DIR, OUT_DIR);
 
   // ---- Gallery: all top-level /photos images, chronological ----
   const galleryNames = (await listImages(SRC_DIR)).sort((a, b) => sortKey(a).localeCompare(sortKey(b)));
